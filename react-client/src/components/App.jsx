@@ -13,7 +13,7 @@ const App = () => {
       <div className="container">
         <InputForm />
         <PetDisplay />
-        <Config />
+        {/* <Config /> */}
       </div>
     </div>
   );

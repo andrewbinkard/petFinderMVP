@@ -3,7 +3,7 @@ var SRC_DIR = path.join(__dirname, "/react-client/src");
 var DIST_DIR = path.join(__dirname, "/react-client/dist");
 
 module.exports = {
-  entry: `${SRC_DIR}/index.jsx`,
+  entry: `${SRC_DIR}/Index.jsx`,
   output: {
     filename: "bundle.js",
     path: DIST_DIR,
@@ -19,5 +19,9 @@ module.exports = {
         },
       },
     ],
+  },
+  watchOptions: {
+    poll: true,
+    ignored: /node_modules/,
   },
 };

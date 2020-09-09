@@ -1,13 +1,12 @@
 {
   "name": "github-fetcher-fullstack-v2",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
-  "author": "Beth Johnson",
+  "author": "Andrew Binkard",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -17,13 +16,21 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "angular": "^1.6.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
-    "jquery": "^3.1.1",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewbinkard/hratx50-mvp-starter.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/andrewbinkard/hratx50-mvp-starter/issues"
+  },
+  "homepage": "https://github.com/andrewbinkard/hratx50-mvp-starter#readme",
+  "description": ""
 }

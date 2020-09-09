@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InputForm from "./InputForm.jsx";
 import PetDisplay from "./PetDisplay.jsx";
-import Config from "./Config.jsx";
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
       <div className="container">
         <InputForm />
         <PetDisplay />
-        {/* <Config /> */}
       </div>
     </div>
   );

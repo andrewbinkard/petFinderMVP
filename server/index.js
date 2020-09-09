@@ -1,13 +1,15 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const app = express();
+const axios = require("axios");
+const cors = require("cors");
+const path = require("path");
 const port = 4000;
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // const items = require('../database-mysql');
 // const items = require('../database-mongo');
 
-const app = express();
-
-// UNCOMMENT FOR REACT
+app.use(express.json());
+app.use(cors());
 app.use(express.static(__dirname + "/../react-client/dist"));
 
 app.get("/items", function (req, res) {

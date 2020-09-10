@@ -24,7 +24,10 @@ const InputForm = ({ getAnimals, handleZipChange, handleSpeciesChange }) => {
             placeholder="Enter Your 5-Digit Zipcode"
             maxLength="5"
           />
-          <button type="submit" className="btn btn-dark btn-lg btn-block mt-3">
+          <button
+            type="submit"
+            className="btn btn-secondary btn-lg btn-block mt-3"
+          >
             Find Some Fur Babies!
           </button>
         </div>

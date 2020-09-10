@@ -4,9 +4,11 @@ import PetDisplay from "./PetDisplay.jsx";
 import apiconfig from "../../../apiconfig.js";
 import axios from "axios";
 import Image from "react-bootstrap/Image";
+import isValidZip from "is-valid-zip";
 
 const App = () => {
   const [animals, setAnimals] = useState([]);
+  const [pages, setPages] = useState([]);
   const [species, setSpecies] = useState("");
   const [zip, setZip] = useState("");
 
@@ -22,20 +24,23 @@ const App = () => {
     headers: { Authorization: `Bearer ${apiconfig.token}` },
   };
 
-  // useEffect(() => {}, []);
-
   const getAnimals = (e) => {
     e.preventDefault();
-    axios
-      .get(
-        `https://api.petfinder.com/v2/animals?type=${species}&location=${zip}`,
-        config
-      )
-      .then(({ data }) => {
-        console.log("SUCCESS! ", data);
-        setAnimals(data.animals);
-      })
-      .catch((err) => console.log("FAILURE! ", err));
+    if (!isValidZip(zip)) {
+      alert("Please enter a valid zip");
+    } else {
+      axios
+        .get(
+          `https://api.petfinder.com/v2/animals?type=${species}&location=${zip}`,
+          config
+        )
+        .then(({ data }) => {
+          console.log("SUCCESS! ", data);
+          setAnimals(data.animals);
+          setPages(data.pagination._links);
+        })
+        .catch((err) => console.log("FAILURE! ", err));
+    }
   };
 
   return (
@@ -49,7 +54,7 @@ const App = () => {
           handleZipChange={handleZipChange}
           handleSpeciesChange={handleSpeciesChange}
         />
-        <PetDisplay animals={animals} />
+        <PetDisplay animals={animals} pages={pages} />
       </div>
     </div>
   );

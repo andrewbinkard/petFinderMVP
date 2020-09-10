@@ -11,8 +11,10 @@ const InputForm = ({ getAnimals, handleZipChange, handleSpeciesChange }) => {
             onChange={handleSpeciesChange}
           >
             <option value="select">Select Your Species</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Bird">Bird</option>
+            <option value="Barnyard">Barnyard</option>
           </select>
           <input
             type="text"

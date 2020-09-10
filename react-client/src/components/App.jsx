@@ -28,12 +28,12 @@ const App = () => {
     e.preventDefault();
     axios
       .get(
-        `https://api.petfinder.com/v2/animals?species=${species}&location=${zip}`,
+        `https://api.petfinder.com/v2/animals?type=${species}&location=${zip}`,
         config
       )
       .then(({ data }) => {
         console.log("SUCCESS! ", data);
-        setAnimals(data);
+        setAnimals(data.animals);
       })
       .catch((err) => console.log("FAILURE! ", err));
   };

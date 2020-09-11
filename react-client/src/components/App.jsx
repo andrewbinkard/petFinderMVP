@@ -47,7 +47,7 @@ const App = () => {
         )
         .then(({ data }) => {
           console.log("SUCCESS! ", data);
-          setAnimals(data.animals);
+          setAnimals(data.animals.sort((a, b) => a.distance - b.distance));
           setPages(data.pagination._links);
         })
         .catch((err) =>

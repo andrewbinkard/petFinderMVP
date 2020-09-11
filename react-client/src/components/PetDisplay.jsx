@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Image from "react-bootstrap/Image";
-import { Button, Accordion, Collapse, Card } from "react-bootstrap";
+import { Button, Accordion, Card } from "react-bootstrap";
 
-const PetDisplay = ({ animals, pages }) => {
+const PetDisplay = ({ animals }) => {
   return (
     <div>
-      {/* {console.log("ANIMALS! ", animals)} */}
       {animals.map((animal) => {
         return (
           <div key={animal.id} className="card card-body mb-3">

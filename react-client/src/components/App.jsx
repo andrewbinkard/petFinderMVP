@@ -20,6 +20,17 @@ const App = () => {
     setZip(e.target.value);
   };
 
+  const showAlert = (message, className) => {
+    const div = document.createElement("div");
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector(".container");
+    const alert = document.querySelector("#alert");
+    container.insertBefore(div, alert);
+    setAnimals([]);
+    setTimeout(() => document.querySelector(".alert").remove(), 3000);
+  };
+
   const config = {
     headers: { Authorization: `Bearer ${apiconfig.token}` },
   };
@@ -27,7 +38,7 @@ const App = () => {
   const getAnimals = (e) => {
     e.preventDefault();
     if (!isValidZip(zip)) {
-      alert("Please enter a valid zip");
+      showAlert("Please enter a valid zip", "danger");
     } else {
       axios
         .get(
@@ -39,7 +50,12 @@ const App = () => {
           setAnimals(data.animals);
           setPages(data.pagination._links);
         })
-        .catch((err) => console.log("FAILURE! ", err));
+        .catch((err) =>
+          showAlert(
+            "No animals of that species found near the inputted zip code",
+            "danger"
+          )
+        );
     }
   };
 
@@ -49,6 +65,7 @@ const App = () => {
         <Image src="./img/PetFinderLogoLightSmall.jpeg" alt="logo" fluid />
       </header>
       <div className="container">
+        <div id="alert"></div>
         <InputForm
           getAnimals={getAnimals}
           handleZipChange={handleZipChange}

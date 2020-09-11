@@ -3,12 +3,14 @@ import React from "react";
 const Paginate = ({ pages }) => {
   const pageLinks = [];
 
-  // if (pages._links) {
-  //   pageLinks.push(pages._links.next.href);
-  //   if (pages._links.previous) {
-  //     pageLinks.push(pages._links.previous.href);
-  //   }
-  // }
+  // add token to a new get request!
+
+  if (pages._links) {
+    pageLinks.push(pages._links.next.href);
+    if (pages._links.previous) {
+      pageLinks.push(pages._links.previous.href);
+    }
+  }
 
   // for (
   //   let i = 1;

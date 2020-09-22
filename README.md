@@ -8,3 +8,6 @@
 * Utilized and interacted with a live API to return data on pets available for adoption based on a desired species and location input
 * Utilized bootstrap to create a user-friendly and responsive interface using React and React Hooks
 * Future development plans include deployment of a backend and account/login functionality to allow users to interact more deeply with the data, such as being able to “favorite” certain pets and track their adoption status.
+
+## Demo
+![demo](https://github.com/andrewbinkard/petFinderMVP/blob/master/PetFinderDemo.gif)

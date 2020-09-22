@@ -1,3 +1,2 @@
-# petFinderMVP
+# ![logo](https://i.imgur.com/HKKo5ue.png)
 Minimum Viable Product project completed during Hack Reactor Software Engineering Immersive - September 2020
-![demogif](https://i.imgur.com/fkmnGlS.gif)

@@ -4,7 +4,7 @@ const axios = require("axios");
 const cors = require("cors");
 const path = require("path");
 const port = 5000;
-const apiconfig = require("../apiconfig.js");
+// const { apiConfig, requestConfig } = require("../config.js");
 
 app.use(express.json());
 app.use(cors());

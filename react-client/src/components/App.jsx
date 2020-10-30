@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import InputForm from "./InputForm.jsx";
 import PetDisplay from "./PetDisplay.jsx";
-import apiconfig from "../../../apiconfig.js";
+import Paginate from "./Paginate.jsx";
+import { apiConfig, requestConfig } from "../../../config.js";
 import axios from "axios";
 import Image from "react-bootstrap/Image";
 import isValidZip from "is-valid-zip";
@@ -31,10 +32,6 @@ const App = () => {
     setTimeout(() => document.querySelector(".alert").remove(), 3000);
   };
 
-  const config = {
-    headers: { Authorization: `Bearer ${apiconfig.token}` },
-  };
-
   const getAnimals = (e) => {
     e.preventDefault();
     if (!isValidZip(zip)) {
@@ -43,7 +40,7 @@ const App = () => {
       axios
         .get(
           `https://api.petfinder.com/v2/animals?type=${species}&location=${zip}`,
-          config
+          requestConfig
         )
         .then(({ data }) => {
           console.log("SUCCESS! ", data);
@@ -61,23 +58,42 @@ const App = () => {
     }
   };
 
-  return (
-    <div>
-      <header className="bg-light text-center h-10 mb-4 p-3">
-        <Image src="./img/PetFinderLogoLightSmall.jpeg" alt="logo" fluid />
-      </header>
-      <div className="container">
-        <div id="alert"></div>
-        <InputForm
-          getAnimals={getAnimals}
-          handleZipChange={handleZipChange}
-          handleSpeciesChange={handleSpeciesChange}
-        />
-        <PetDisplay animals={animals} />
-        {/* <Paginate pages={pages} /> */}
+  if (!pages.hasOwnProperty("current_page")) {
+    return (
+      <div>
+        <header className="bg-light text-center h-10 mb-4 p-3">
+          <Image src="./img/PetFinderLogoLightSmall.jpeg" alt="logo" fluid />
+        </header>
+        <div className="container">
+          <div id="alert"></div>
+          <InputForm
+            getAnimals={getAnimals}
+            handleZipChange={handleZipChange}
+            handleSpeciesChange={handleSpeciesChange}
+          />
+          <PetDisplay animals={animals} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <header className="bg-light text-center h-10 mb-4 p-3">
+          <Image src="./img/PetFinderLogoLightSmall.jpeg" alt="logo" fluid />
+        </header>
+        <div className="container">
+          <div id="alert"></div>
+          <InputForm
+            getAnimals={getAnimals}
+            handleZipChange={handleZipChange}
+            handleSpeciesChange={handleSpeciesChange}
+          />
+          <PetDisplay animals={animals} />
+          <Paginate pages={pages} />
+        </div>
+      </div>
+    );
+  }
 };
 
 export default App;

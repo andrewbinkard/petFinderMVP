@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import InputForm from "./InputForm.jsx";
 import PetDisplay from "./PetDisplay.jsx";
-import Paginate from "./Paginate.jsx";
 import apiconfig from "../../../apiconfig.js";
 import axios from "axios";
 import Image from "react-bootstrap/Image";
@@ -48,19 +47,19 @@ const App = () => {
         )
         .then(({ data }) => {
           console.log("SUCCESS! ", data);
-          setAnimals(data.animals.sort((a, b) => a.distance - b.distance));
+          !data.animals.length
+            ? showAlert(
+                "No animals of that species found near the inputted zip code",
+                "danger"
+              )
+            : setAnimals(data.animals.sort((a, b) => a.distance - b.distance));
           setPages(data.pagination);
         })
-        .catch((err) =>
-          showAlert(
-            "No animals of that species found near the inputted zip code",
-            "danger"
-          )
-        );
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
-
-  const paginateIt = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -75,7 +74,7 @@ const App = () => {
           handleSpeciesChange={handleSpeciesChange}
         />
         <PetDisplay animals={animals} />
-        <Paginate pages={pages} />
+        {/* <Paginate pages={pages} /> */}
       </div>
     </div>
   );

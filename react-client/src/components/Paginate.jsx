@@ -11,6 +11,7 @@ const Paginate = ({ pages }) => {
       pageLinks.push(pages._links.previous.href);
     }
   }
+  // previous approach:
 
   // for (
   //   let i = 1;

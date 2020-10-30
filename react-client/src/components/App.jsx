@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import InputForm from "./InputForm.jsx";
 import PetDisplay from "./PetDisplay.jsx";
 import Paginate from "./Paginate.jsx";
-
 import apiconfig from "../../../apiconfig.js";
 import axios from "axios";
 import Image from "react-bootstrap/Image";

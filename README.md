@@ -9,6 +9,7 @@
 - Employed MVP strategies to create an app in a limited timeframe (two days)
 - Utilized and interacted with a live API to return data on pets available for adoption based on a desired species and location input
 - Utilized bootstrap to create a user-friendly and responsive interface using React and React Hooks
+- Implemented pagination using pagination data returned by the API
 - Future development plans include deployment of a backend and account/login functionality to allow users to interact more deeply with the data, such as being able to “favorite” certain pets and track their adoption status.
 
 ## Demo 1

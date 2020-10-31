@@ -32,8 +32,6 @@ const App = () => {
     setTimeout(() => document.querySelector(".alert").remove(), 3000);
   };
 
-  console.log("pages.current_page", pages.current_page);
-
   const getAnimals = (e) => {
     e.preventDefault();
     if (!isValidZip(zip)) {

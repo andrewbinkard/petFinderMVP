@@ -14,10 +14,10 @@ const Paginate = ({ pages, setPages, setAnimals }) => {
         corsHeaders
       )
       .then(({ data }) => {
-        console.log("NEXT PAGE SUCCESS! ", data);
         setAnimals(data.animals.sort((a, b) => a.distance - b.distance));
         setPages(data.pagination);
       })
+      .then(window.scrollTo({ top: 0, behavior: "smooth" }))
       .catch((err) => {
         console.error("PAGINATION FAILURE: ", err);
       });
@@ -31,10 +31,10 @@ const Paginate = ({ pages, setPages, setAnimals }) => {
         corsHeaders
       )
       .then(({ data }) => {
-        console.log("NEXT PAGE SUCCESS! ", data);
         setAnimals(data.animals.sort((a, b) => a.distance - b.distance));
         setPages(data.pagination);
       })
+      .then(window.scrollTo({ top: 0, behavior: "smooth" }))
       .catch((err) => {
         console.error("PAGINATION FAILURE: ", err);
       });

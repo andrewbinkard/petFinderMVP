@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputForm from "./InputForm.jsx";
 import PetDisplay from "./PetDisplay.jsx";
 import Paginate from "./Paginate.jsx";
-import { apiConfig, requestConfig } from "../../../config.js";
+import { requestConfig, corsHeaders } from "../../../config.js";
 import axios from "axios";
 import Image from "react-bootstrap/Image";
 import isValidZip from "is-valid-zip";
@@ -32,6 +32,8 @@ const App = () => {
     setTimeout(() => document.querySelector(".alert").remove(), 3000);
   };
 
+  console.log("pages.current_page", pages.current_page);
+
   const getAnimals = (e) => {
     e.preventDefault();
     if (!isValidZip(zip)) {
@@ -40,7 +42,8 @@ const App = () => {
       axios
         .get(
           `https://api.petfinder.com/v2/animals?type=${species}&location=${zip}`,
-          requestConfig
+          requestConfig,
+          corsHeaders
         )
         .then(({ data }) => {
           console.log("SUCCESS! ", data);
@@ -89,7 +92,13 @@ const App = () => {
             handleSpeciesChange={handleSpeciesChange}
           />
           <PetDisplay animals={animals} />
-          <Paginate pages={pages} />
+          <Paginate
+            pages={pages}
+            species={species}
+            zip={zip}
+            setAnimals={setAnimals}
+            setPages={setPages}
+          />
         </div>
       </div>
     );
